@@ -1,15 +1,15 @@
 'use strict';
 const express = require('express');
 
-const udRoute = express.Router();
+const utRoute = express.Router();
 
 const connection = require('../db');
 
-udRoute.put('/users/:uid', function (req, res, next) {
-    const now = new Date().toISOString().slice(0, 19).replace('T', ' ');;
-   connection.execute("UPDATE user SET PROJECTID=? WHERE PROJECTID=?,Name=? ,DATE=?,Sex=? ,Rank=?;",
+utRoute.put('/utuser/:uid', function (req, res, next) {
+    const now = new Date().toISOString().slice(0, 19).replace('T', ' ');
+   connection.execute("UPDATE user SET Name=? ,DATE=?,Sex=? ,Rank=? WHERE UserID=?;",
 
-    [req.body.PROJECTID,Name,DATE,Sex,Rank, req.params.uid])
+    [req.body.Name,req.body.Date,req.body.Sex,req.body.Rank, req.params.uid])
 
      .then(() => {
 
@@ -24,4 +24,29 @@ udRoute.put('/users/:uid', function (req, res, next) {
      res.status(200).send("Update Successfully.");
 
 });
-module.exports = udRoute;
+utRoute.delete('/users/:uid', function (req, res, next) {
+
+   connection.execute("DELETE FROM user WHERE UserID=?;",
+
+    [req.params.uid])
+
+     .then(() => {
+
+       console.log('ok');
+
+    }).catch((err) => {
+
+       console.log(err);
+
+    });
+
+     res.end();
+
+});
+utRoute.use('/', function (req, res, next) {
+
+   res.sendStatus(404);
+
+
+})
+module.exports = utRoute;

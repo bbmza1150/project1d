@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 16, 2024 at 08:18 PM
+-- Generation Time: Jul 17, 2024 at 11:25 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -45,8 +45,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`admin_id`, `admin_user`, `admin_password`, `admin_Fname`, `admin_Lname`, `admin_image`, `admin_tel`, `admin_email`, `created_at`, `updated_at`) VALUES
-('01', 'warawut_TD', '25d55ad283aa400af464c76d713c07ad', 'warawut', 'ninrat', 'image1', '0973099633', 'warawut@gmail.com', '2024-07-16 03:30:13', '2024-07-16 03:30:13'),
-('02', 'disaya', 'e10adc3949ba59abbe56e057f20f883e', 'Ditsaya', 'Khongdee', 'image2', '0973078888', 'Disaya@gmail.com', '2024-07-16 06:32:32', '2024-07-16 06:32:32');
+('01', 'Peter', '1234', 'peter', 'romanob', 'image', '0855664235', 'ktultralol@gmail.com', '2024-07-16 03:30:13', '2024-07-16 03:30:13');
 
 -- --------------------------------------------------------
 
@@ -72,17 +71,10 @@ CREATE TABLE `user` (
   `UserID` int(11) NOT NULL,
   `PROJECTID` int(11) NOT NULL,
   `Name` varchar(40) NOT NULL,
-  `DATE` date NOT NULL,
+  `DATE` date DEFAULT NULL,
   `Sex` enum('ชาย','หญิง','อื่นๆ') NOT NULL,
   `Rank` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`UserID`, `PROJECTID`, `Name`, `DATE`, `Sex`, `Rank`) VALUES
-(1, 1, 'Peter', '2024-07-16', 'ชาย', 'Ceo');
 
 --
 -- Indexes for dumped tables
